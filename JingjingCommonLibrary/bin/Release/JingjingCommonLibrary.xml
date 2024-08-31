@@ -1,0 +1,886 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JingjingCommonLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:Jingjing.CommonLib.DataBase.MySqlDB">
+            <summary>
+            操作MySQL数据库
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.DataBase.MySqlDB.conn">
+            <summary>
+            实现连接对象的单例模式
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.MySqlDB.GetConnection(System.String)">
+            <summary>
+            获取可用连接对象（单例模式）
+            </summary>
+            <param name="ConnectionString">数据库的连接字符串</param>
+            <returns>连接对象</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.MySqlDB.SelectDataTable(System.String,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            根据给定的查询语句，返回结果数据表
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">给定的查询语句</param>
+            <param name="MySqlParameters">SQL语句的参数数组</param>
+            <returns>查询结果数据表</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.MySqlDB.UpdateDataTable(System.Data.DataTable,System.String,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            将数据表更新到外部数据源 
+            </summary>
+            <param name="dt">回写的数据表内容</param>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">用于生成Update语句的Select语句</param>
+            <param name="MySqlParameters">SQL语句的参数数组</param>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.MySqlDB.ExecuteNonQuery(System.String,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            执行非查询语句，返回整型结果（数据表中受影响的行数）
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">非查询语句</param>
+            <param name="MySqlParameters">SQL语句的参数数组</param>
+            <returns>数据表中受影响的行数</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.MySqlDB.ExecuteScaler(System.String,System.String,MySql.Data.MySqlClient.MySqlParameter[])">
+            <summary>
+            执行统计查询，返回 Object 类型的结果
+            <para>
+            注意：此方法的执行结果为 Object 类型，因此其返回值在使用时要进行类型转换
+            </para>
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">统计查询语句</param>
+            <param name="MySqlParameters">SQL语句的参数数组</param>
+            <returns>Object类型的查询结果</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.MySqlDB.ExecuteMySqlTransaction(System.String,System.String[],MySql.Data.MySqlClient.MySqlParameter[][])">
+            <summary>
+            执行事务
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlStrings">用于传递事务指令集的字符串数组</param>
+            <param name="MySqlParameters">事务指令集的参数数组</param>
+        </member>
+        <member name="T:Jingjing.CommonLib.DataBase.OleDB">
+            <summary>
+            操作Access数据库
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.DataBase.OleDB.conn">
+            <summary>
+            实现连接对象的单例模式
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.OleDB.GetConnection(System.String)">
+            <summary>
+            获取可用连接对象（单例模式）
+            </summary>
+            <param name="ConnectionString">数据库的连接字符串</param>
+            <returns>连接对象</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.OleDB.SelectDataTable(System.String,System.String,System.Data.OleDb.OleDbParameter[])">
+            <summary>
+            根据给定的查询语句，返回结果数据表
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">给定的查询语句</param>
+            <param name="OleDbParameters">SQL语句的参数数组</param>
+            <returns>查询结果数据表</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.OleDB.UpdateDataTable(System.Data.DataTable,System.String,System.String,System.Data.OleDb.OleDbParameter[])">
+            <summary>
+            将数据表更新到外部数据源 
+            </summary>
+            <param name="dt">回写的数据表内容</param>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">用于生成Update语句的Select语句</param>
+            <param name="OleDbParameters">SQL语句的参数数组</param>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.OleDB.ExecuteNonQuery(System.String,System.String,System.Data.OleDb.OleDbParameter[])">
+            <summary>
+            执行非查询语句，返回整型结果（数据表中受影响的行数）
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">非查询语句</param>
+            <param name="OleDbParameters">SQL语句的参数数组</param>
+            <returns>数据表中受影响的行数</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.OleDB.ExecuteScaler(System.String,System.String,System.Data.OleDb.OleDbParameter[])">
+            <summary>
+            执行统计查询，返回 Object 类型的结果
+            <para>
+            注意：此方法的执行结果为 Object 类型，因此其返回值在使用时要进行类型转换
+            </para>
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">统计查询语句</param>
+            <param name="OleDbParameters">SQL语句的参数数组</param>
+            <returns>Object类型的查询结果</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.OleDB.ExecuteOleDbTransaction(System.String,System.String[],System.Data.OleDb.OleDbParameter[][])">
+            <summary>
+            执行事务
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlStrings">用于传递事务指令集的字符串数组</param>
+            <param name="OleDbParameters">事务指令集的参数数组</param>
+        </member>
+        <member name="T:Jingjing.CommonLib.DataBase.SqlDB">
+            <summary>
+            操作SQL Server数据库
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.DataBase.SqlDB.conn">
+            <summary>
+            实现连接对象的单例模式
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SqlDB.GetConnection(System.String)">
+            <summary>
+            获取可用连接对象（单例模式）
+            </summary>
+            <param name="ConnectionString">数据库的连接字符串</param>
+            <returns>连接对象</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SqlDB.SelectDataTable(System.String,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            根据给定的查询语句，返回结果数据表
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">给定的查询语句</param>
+            <param name="SqlParameters">SQL语句的参数数组</param>
+            <returns>查询结果数据表</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SqlDB.UpdateDataTable(System.Data.DataTable,System.String,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            将数据表更新到外部数据源 
+            </summary>
+            <param name="dt">回写的数据表内容</param>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">用于生成Update语句的Select语句</param>
+            <param name="SqlParameters">SQL语句的参数数组</param>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SqlDB.ExecuteNonQuery(System.String,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行非查询语句，返回整型结果（数据表中受影响的行数）
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">非查询语句</param>
+            <param name="SqlParameters">SQL语句的参数数组</param>
+            <returns>数据表中受影响的行数</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SqlDB.ExecuteScaler(System.String,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行统计查询，返回 Object 类型的结果
+            <para>
+            注意：此方法的执行结果为 Object 类型，因此其返回值在使用时要进行类型转换
+            </para>
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlString">统计查询语句</param>
+            <param name="SqlParameters">SQL语句的参数数组</param>
+            <returns>Object类型的查询结果</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SqlDB.ExecuteSqlTransaction(System.String,System.String[],System.Data.SqlClient.SqlParameter[][])">
+            <summary>
+            执行事务
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+            <param name="SqlStrings">用于传递事务指令集的字符串数组</param>
+            <param name="SqlParameters">事务指令集的参数数组</param>
+        </member>
+        <member name="T:Jingjing.CommonLib.DataBase.SQLiteDB">
+            <summary>
+            操作SQLite数据库
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.DataBase.SQLiteDB.conn">
+            <summary>
+            实现连接对象的单例模式
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SQLiteDB.GetConnection(System.String)">
+            <summary>
+            获取可用连接对象（单例模式）
+            </summary>
+            <param name="DataFilePath">数据库文件的位置</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SQLiteDB.CreateNewDatabase(System.String)">
+            <summary>
+            创建一个空数据库
+            </summary>
+            <param name="DataFilePath">数据库文件的位置</param>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SQLiteDB.SelectDataTable(System.String,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            根据给定的查询语句，返回结果数据表
+            </summary>
+            <param name="DataFilePath">数据库文件的位置</param>
+            <param name="SqlString">给定的查询语句</param>
+            <param name="SqliteParameters">SQL语句的参数数组</param>
+            <returns>查询结果数据表</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SQLiteDB.UpdateDataTable(System.Data.DataTable,System.String,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            将数据表更新到外部数据源 
+            </summary>
+            <param name="dt">回写的数据表内容</param>
+            <param name="DataFilePath">数据库文件的位置</param>
+            <param name="SqlString">用于生成Update语句的Select语句</param>
+            <param name="SqliteParameters">SQL语句的参数数组</param>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SQLiteDB.ExecuteNonQuery(System.String,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            执行非查询语句，返回整型结果（数据表中受影响的行数）
+            </summary>
+            <param name="DataFilePath">数据库文件的位置</param>
+            <param name="SqlString">非查询语句</param>
+            <param name="SqliteParameters">SQL语句的参数数组</param>
+            <returns>数据表中受影响的行数</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SQLiteDB.ExecuteScaler(System.String,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            执行统计查询，返回 Object 类型的结果
+            <para>
+            注意：此方法的执行结果为 Object 类型，因此其返回值在使用时要进行类型转换
+            </para>
+            </summary>
+            <param name="DataFilePath">数据库文件的位置</param>
+            <param name="SqlString">统计查询语句</param>
+            <param name="SqliteParameters">SQL语句的参数数组</param>
+            <returns>Object类型的查询结果</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.DataBase.SQLiteDB.ExecuteSqliteTransaction(System.String,System.String[],System.Data.SQLite.SQLiteParameter[][])">
+            <summary>
+            执行事务
+            </summary>
+            <param name="DataFilePath">数据库文件的位置</param>
+            <param name="SqlStrings">用于传递事务指令集的字符串数组</param>
+            <param name="SqliteParameters">事务指令集的参数数组</param>
+        </member>
+        <member name="T:Jingjing.CommonLib.RSAHelper">
+            <summary>
+            对二进制数据进行RSA加密或解密
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.RSAHelper.rsa">
+            <summary>
+            RSA对象
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.RSAHelper.private_key_xml">
+            <summary>
+            XML格式的私钥
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.RSAHelper.public_key_xml">
+            <summary>
+            XML格式的公钥
+            </summary>
+        </member>
+        <member name="P:Jingjing.CommonLib.RSAHelper.PrivateKeyXML">
+            <summary>
+            XML格式的私钥
+            </summary>
+        </member>
+        <member name="P:Jingjing.CommonLib.RSAHelper.PublicKeyXML">
+            <summary>
+            XML格式的公钥
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.RSAHelper.#ctor(System.Int32)">
+            <summary>
+            用指定的密钥长度初始化RSA对象
+            </summary>
+            <param name="keySize">密钥长度</param>
+        </member>
+        <member name="M:Jingjing.CommonLib.RSAHelper.RSAEncrypt(System.String,System.Byte[])">
+            <summary>
+            使用公钥加密（解密需使用私钥）
+            </summary>
+            <param name="publicKeyXML">XML格式的公钥</param>
+            <param name="inputData">待加密的数据</param>
+            <returns>加密后的数据</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.RSAHelper.RSAEncrypt2(System.String,System.Byte[])">
+            <summary>
+            使用私钥加密（解密需使用公钥）（尚未实现）
+            </summary>
+            <param name="privateKeyXML">XML格式的私钥</param>
+            <param name="inputData">待加密的数据</param>
+            <returns>加密后的数据</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.RSAHelper.RSADecrypt(System.String,System.Byte[])">
+            <summary>
+            使用私钥解密（用于解密使用公钥加密的数据）
+            </summary>
+            <param name="privateKeyXML">XML格式的私钥</param>
+            <param name="encryptedData">已加密的数据</param>
+            <returns>解密后的数据</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.RSAHelper.RSADecrypt2(System.String,System.Byte[])">
+            <summary>
+            使用公钥解密（用于解密使用私钥加密的数据）（尚未实现）
+            </summary>
+            <param name="publicKeyXML">XML格式的公钥</param>
+            <param name="encryptedData">已加密的数据</param>
+            <returns>解密后的数据</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Jingjing.CommonLib.Util.BankCardNumChecker">
+            <summary>
+            校验银行卡号的有效性<br />
+            注意：此程序仅用于校验银行卡号的编码格式是否正确，无法用于检测银行卡号是否真实存在。
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.BankCardNumChecker.Check(System.String)">
+            <summary>
+            校验银行卡号的有效性
+            </summary>
+            <param name="cardNum">银行卡号</param>
+            <returns>银行卡号是否有效</returns>
+        </member>
+        <member name="T:Jingjing.CommonLib.Util.Base64Helaper">
+            <summary>
+            对文件、字符串和流进行Base64编码或解码
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.Base64Helaper.FileToBase64(System.String)">
+            <summary>
+            将文件的二进制数据编码为Base64字符串（文件大小不得超过2GB）
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <returns>编码后的字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.Base64Helaper.FileFromBase64(System.String)">
+            <summary>
+            将以Base64字符串形式存储的文件解码为二进制数据（文件大小不得超过2GB）
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <returns>解码后的二进制数据</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.Base64Helaper.TextToBase64(System.String)">
+            <summary>
+            对字符串进行Base64编码
+            </summary>
+            <param name="inputString">输入的字符串</param>
+            <returns>编码后的字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.Base64Helaper.TextFromBase64(System.String)">
+            <summary>
+            对字符串进行Base64解码
+            </summary>
+            <param name="base64String">输入的字符串</param>
+            <returns>解码后的字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.Base64Helaper.StreamToBase64(System.IO.Stream)">
+            <summary>
+            对流进行Base64编码
+            </summary>
+            <param name="inputStream">待编码的流</param>
+            <returns>编码后的字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.Base64Helaper.StreamFromBase64(System.String)">
+            <summary>
+            将Base64字符串解码为流
+            </summary>
+            <param name="base64String">编码后的字符串</param>
+            <returns>解码后的流</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Jingjing.CommonLib.Util.BiliHelper">
+            <summary>
+            B站AV号-BV号互转
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.BiliHelper.table">
+            <summary>
+            编码表（顺序不可改变）
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.BiliHelper.min_avid">
+            <summary>
+            AV号的最小值
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.BiliHelper.max_avid">
+            <summary>
+            AV号的最大值
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.BiliHelper.xor">
+            <summary>
+            运算值1（xor）
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.BiliHelper.mask">
+            <summary>
+            运算值2（mask）
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.BiliHelper.AVtoBV(System.String)">
+            <summary>
+            将AV号转为BV号
+            </summary>
+            <param name="AVID">AV号</param>
+            <returns>BV号</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.BiliHelper.BVtoAV(System.String)">
+            <summary>
+            将BV号转为AV号
+            </summary>
+            <param name="BVID">BV号</param>
+            <returns>AV号</returns>
+        </member>
+        <member name="T:Jingjing.CommonLib.Util.BiliHelper_old">
+            <summary>
+            B站AV号-BV号互转（已废弃）<br />
+            注意：此代码已废弃，仅用于留档，不可使用。
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.BiliHelper_old.table">
+            <summary>
+            编码表（顺序不可改变）
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.BiliHelper_old.ss">
+            <summary>
+            由10位BV号的索引构成的数组（顺序不可改变）
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.BiliHelper_old.xor">
+            <summary>
+            运算值1（xor）
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.BiliHelper_old.add">
+            <summary>
+            运算值2（add）
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.BiliHelper_old.AVtoBV(System.String)">
+            <summary>
+            将AV号转为BV号
+            </summary>
+            <param name="AV_Num">AV号</param>
+            <returns>BV号</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.BiliHelper_old.BVtoAV(System.String)">
+            <summary>
+            将BV号转为AV号
+            </summary>
+            <param name="BV_Num">BV号</param>
+            <returns>AV号</returns>
+        </member>
+        <member name="T:Jingjing.CommonLib.Util.GUIDHelper">
+            <summary>
+            生成GUID
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.GUIDHelper.GetGUID">
+            <summary>
+            生成带有连字符“-”的GUID
+            </summary>
+            <returns>GUID字符串</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.GUIDHelper.GetGUID(System.Boolean)">
+            <summary>
+            生成GUID，可以指定是否带有连字符“-”
+            </summary>
+            <param name="hyphen">是否带有连字符“-”</param>
+            <returns>GUID字符串</returns>
+        </member>
+        <member name="T:Jingjing.CommonLib.Util.HashHelper">
+            <summary>
+            计算文件、字符串和流的哈希值
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetCRC32Table">
+            <summary>
+            初始化CRC32码表
+            </summary>
+            <returns>CRC32码表</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetMD5CodeFromFile(System.String)">
+            <summary>
+            计算文件的MD5值（文件大小不得超过2GB）
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <returns>MD5字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA1CodeFromFile(System.String)">
+            <summary>
+            计算文件的SHA1值（文件大小不得超过2GB）
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <returns>SHA1字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA256CodeFromFile(System.String)">
+            <summary>
+            计算文件的SHA256值（文件大小不得超过2GB）
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <returns>SHA256字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA384CodeFromFile(System.String)">
+            <summary>
+            计算文件的SHA384值（文件大小不得超过2GB）
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <returns>SHA384字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA512CodeFromFile(System.String)">
+            <summary>
+            计算文件的SHA512值（文件大小不得超过2GB）
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <returns>SHA512字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetCRC32CodeFromFile(System.String)">
+            <summary>
+            计算文件的CRC32值（文件大小不得超过2GB）
+            </summary>
+            <param name="filePath">源文件路径</param>
+            <returns>CRC32字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetMD5CodeFromText(System.String)">
+            <summary>
+            计算字符串的MD5值
+            </summary>
+            <param name="inputString">输入的字符串</param>
+            <returns>MD5字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA1CodeFromText(System.String)">
+            <summary>
+            计算字符串的SHA1值
+            </summary>
+            <param name="inputString">输入的字符串</param>
+            <returns>SHA1字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA256CodeFromText(System.String)">
+            <summary>
+            计算字符串的SHA256值
+            </summary>
+            <param name="inputString">输入的字符串</param>
+            <returns>SHA256字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA384CodeFromText(System.String)">
+            <summary>
+            计算字符串的SHA384值
+            </summary>
+            <param name="inputString">输入的字符串</param>
+            <returns>SHA384字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA512CodeFromText(System.String)">
+            <summary>
+            计算字符串的SHA512值
+            </summary>
+            <param name="inputString">输入的字符串</param>
+            <returns>SHA512字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetCRC32CodeFromText(System.String)">
+            <summary>
+            计算字符串的CRC32值
+            </summary>
+            <param name="inputString">输入的字符串</param>
+            <returns>CRC32字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetMD5CodeFromStream(System.IO.Stream)">
+            <summary>
+            计算流的MD5值
+            </summary>
+            <param name="inputStream">输入的流</param>
+            <returns>MD5字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA1CodeFromStream(System.IO.Stream)">
+            <summary>
+            计算流的SHA1值
+            </summary>
+            <param name="inputStream">输入的流</param>
+            <returns>SHA1字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA256CodeFromStream(System.IO.Stream)">
+            <summary>
+            计算流的SHA256值
+            </summary>
+            <param name="inputStream">输入的流</param>
+            <returns>SHA256字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA384CodeFromStream(System.IO.Stream)">
+            <summary>
+            计算流的SHA384值
+            </summary>
+            <param name="inputStream">输入的流</param>
+            <returns>SHA384字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetSHA512CodeFromStream(System.IO.Stream)">
+            <summary>
+            计算流的SHA512值
+            </summary>
+            <param name="inputStream">输入的流</param>
+            <returns>SHA512字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.HashHelper.GetCRC32CodeFromStream(System.IO.Stream)">
+            <summary>
+            计算流的CRC32值
+            </summary>
+            <param name="inputStream">输入的流</param>
+            <returns>CRC32字符串</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Jingjing.CommonLib.Util.IDCardNumChecker">
+            <summary>
+            校验18位身份证号的有效性<br />
+            注意：此程序仅用于校验身份证号的编码格式是否正确，无法用于检测身份证号是否真实存在。
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.IDCardNumChecker.num1">
+            <summary>
+            前17位的合法字符
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.IDCardNumChecker.num2">
+            <summary>
+            第18位的合法字符
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.IDCardNumChecker.weight">
+            <summary>
+            前17位的对应系数
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.Util.IDCardNumChecker.verify_code">
+            <summary>
+            校验码
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.IDCardNumChecker.Check(System.String)">
+            <summary>
+            校验18位身份证号的有效性
+            </summary>
+            <param name="idNum">18位身份证号</param>
+            <returns>身份证号是否有效</returns>
+        </member>
+        <member name="T:Jingjing.CommonLib.Util.INIHelper">
+            <summary>
+            操作配置文件（INI文件）
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.INIHelper.GetPrivateProfileString(System.String,System.String,System.String,System.Text.StringBuilder,System.Int32,System.String)">
+            <summary>
+            从配置文件中读取数据，此为kernel32.dll中的外部方法
+            </summary>
+            <param name="section">节</param>
+            <param name="key">键</param>
+            <param name="defval">默认值</param>
+            <param name="retval">缓冲区（读取到的值）</param>
+            <param name="size">缓冲区大小</param>
+            <param name="filepath">配置文件路径</param>
+            <returns>复制到缓冲区的字符数</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.INIHelper.WritePrivateProfileString(System.String,System.String,System.String,System.String)">
+            <summary>
+            向配置文件中写入数据，此为kernel32.dll中的外部方法
+            </summary>
+            <param name="section">节</param>
+            <param name="key">键</param>
+            <param name="value">值</param>
+            <param name="filepath">配置文件路径</param>
+            <returns>方法是否执行成功</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.INIHelper.getValue(System.String,System.String,System.String,System.String)">
+            <summary>
+            从配置文件中读取数据
+            </summary>
+            <param name="section">节</param>
+            <param name="key">键</param>
+            <param name="defval">默认值</param>
+            <param name="filepath">配置文件路径</param>
+            <returns>复制到缓冲区的字符数</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.INIHelper.setValue(System.String,System.String,System.String,System.String)">
+            <summary>
+            向配置文件中写入数据
+            </summary>
+            <param name="section">节</param>
+            <param name="key">键</param>
+            <param name="value">值</param>
+            <param name="filepath">配置文件路径</param>
+            <returns>方法是否执行成功</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.INIHelper.deleteKey(System.String,System.String,System.String)">
+            <summary>
+            从配置文件中删除指定的键
+            </summary>
+            <param name="section">节</param>
+            <param name="key">键</param>
+            <param name="filepath">配置文件路径</param>
+            <returns>方法是否执行成功</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.INIHelper.deleteSection(System.String,System.String)">
+            <summary>
+            从配置文件中删除指定的节
+            </summary>
+            <param name="section">节</param>
+            <param name="filepath">配置文件路径</param>
+            <returns>方法是否执行成功</returns>
+        </member>
+        <member name="T:Jingjing.CommonLib.Util.StringExtractor">
+            <summary>
+            截取两个指定字符串中间的字符串
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.StringExtractor.Extract(System.String,System.String,System.String)">
+            <summary>
+            截取两个指定字符串中间的字符串
+            </summary>
+            <param name="inputString">输入的字符串</param>
+            <param name="startString">起始字符串</param>
+            <param name="endString">结束字符串</param>
+            <returns>截取出的字符串数组</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Jingjing.CommonLib.Util.URLHelper">
+            <summary>
+            对字符串进行URL编码或解码
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.URLHelper.URLEncode(System.String,System.Boolean)">
+            <summary>
+            对字符串进行URL编码
+            </summary>
+            <param name="inputString">输入的字符串</param>
+            <param name="isUpper">编码后的字符串是否大写</param>
+            <returns>编码后的字符串</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.Util.URLHelper.URLDecode(System.String)">
+            <summary>
+            对字符串进行URL解码
+            </summary>
+            <param name="inputString">输入的字符串</param>
+            <returns>编码后的字符串</returns>
+        </member>
+        <member name="T:Jingjing.CommonLib.CaptchaImage">
+            <summary>
+            生成验证码
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.CaptchaImage.code">
+            <summary>
+            验证码文本
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.CaptchaImage.image">
+            <summary>
+            验证码图片
+            </summary>
+        </member>
+        <member name="P:Jingjing.CommonLib.CaptchaImage.Code">
+            <summary>
+            验证码文本
+            </summary>
+        </member>
+        <member name="P:Jingjing.CommonLib.CaptchaImage.Image">
+            <summary>
+            验证码图片
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.CaptchaImage.GetRandomCode(System.Int32)">
+            <summary>
+            生成随机验证码
+            </summary>
+            <param name="length">验证码的长度</param>
+            <returns>验证码文本</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.CaptchaImage.DrowImage(System.String)">
+            <summary>
+            绘制验证码图片
+            </summary>
+            <param name="code">验证码文本</param>
+            <returns>验证码图片</returns>
+        </member>
+        <member name="M:Jingjing.CommonLib.CaptchaImage.Next(System.Int32)">
+            <summary>
+            重新生成一个给定长度的验证码
+            </summary>
+            <param name="length">验证码的长度</param>
+            <returns>验证码文本</returns>
+        </member>
+        <member name="T:Jingjing.CommonLib.RandomCode">
+            <summary>
+            生成随机字符串
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.RandomCode.code">
+            <summary>
+            随机字符串
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.RandomCode.length">
+            <summary>
+            随机字符串的长度
+            </summary>
+        </member>
+        <member name="F:Jingjing.CommonLib.RandomCode.seed">
+            <summary>
+            随机字符串的种子
+            </summary>
+        </member>
+        <member name="P:Jingjing.CommonLib.RandomCode.Code">
+            <summary>
+            随机字符串
+            </summary>
+        </member>
+        <member name="P:Jingjing.CommonLib.RandomCode.Length">
+            <summary>
+            随机字符串的长度
+            </summary>
+        </member>
+        <member name="P:Jingjing.CommonLib.RandomCode.Seed">
+            <summary>
+            随机字符串的种子，字符串的内容将从这里挑选
+            </summary>
+        </member>
+        <member name="M:Jingjing.CommonLib.RandomCode.Next(System.String,System.Int32)">
+            <summary>
+            使用给定的种子和长度生成一个随机字符串
+            </summary>
+            <param name="seed">随机字符串的种子，字符串的内容将从这里挑选</param>
+            <param name="length">随机字符串的长度</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
